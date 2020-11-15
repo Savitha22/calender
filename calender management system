@@ -1,0 +1,550 @@
+#include <OpenXLSX.hpp>
+#include<iomanip>
+#include <iostream>
+
+using namespace std;
+using namespace OpenXLSX;
+
+int main()
+{
+    XLDocument doc;
+    doc.create("./dhanu.xlsx");
+    auto wbk = doc.workbook();
+    for (const auto& name : wbk.worksheetNames()) ;
+    wbk.addWorksheet("January");
+    wbk.addWorksheet("February");
+    wbk.sheet("Sheet1").get<XLWorksheet>().clone("March");
+    wbk.cloneSheet("January", "April");
+    wbk.cloneSheet("January", "May");
+    wbk.cloneSheet("January", "June");
+    wbk.cloneSheet("January", "July");
+    wbk.cloneSheet("January", "August");
+    wbk.cloneSheet("January", "September");
+    wbk.cloneSheet("January", "October");
+    wbk.cloneSheet("January", "November");
+    wbk.cloneSheet("January", "December");
+    for (const auto& name : wbk.worksheetNames()) ;
+    wbk.deleteSheet("Sheet1");
+    for (const auto& name : wbk.worksheetNames()) 
+
+    wbk.sheet("January").setColor(XLColor(0, 0, 0));
+    wbk.sheet("February").setColor(XLColor(255, 0, 0));
+    wbk.sheet("March").setColor(XLColor(0, 255, 0));
+    wbk.sheet("April").setColor(XLColor(0, 0, 255));
+    wbk.sheet("May").setColor(XLColor(0, 0, 0));
+    wbk.sheet("June").setColor(XLColor(255, 0, 0));
+    wbk.sheet("July").setColor(XLColor(0, 255, 0));
+    wbk.sheet("August").setColor(XLColor(0, 0, 255));
+    wbk.sheet("September").setColor(XLColor(0, 0, 0));
+    wbk.sheet("October").setColor(XLColor(255, 0, 0));
+    wbk.sheet("November").setColor(XLColor(0, 255, 0));
+    wbk.sheet("December").setColor(XLColor(0, 0, 255));
+
+      
+     int year=2019, month, date;
+     float Time;
+     string Event_name;
+     cout << " Year:"<< year<< endl;
+	 cout <<"Enter the Month  : ";
+	 cin >> month;
+     cout << "Enter the date : ";
+     cin >> date;
+    if(month>=1 && month<=12)
+        {
+		if (month == 1)
+		{ 
+           if(date>=0 && date<=31)
+                {
+               for (const auto& name : wbk.worksheetNames()) ;
+    		 wbk.worksheet("January").setIndex(1);
+             auto wks1 = doc.workbook().worksheet(" January");  
+             wks1.cell("A1").value() = "date";
+             wks1.cell("B1").value() = "Time";
+             wks1.cell("C1").value() = "Event Name";
+             if(date==1){
+             auto wks1 = doc.workbook().worksheet(" January");             
+             wks1.cell("A2").value() = 01;
+             wks1.cell("B2").value() = 10.00;
+             wks1.cell("C2").value() = "New year's day";}
+             else if(date==16){
+             auto wks1 = doc.workbook().worksheet("January");
+              wks1.cell("A2").value() = 16;
+              wks1.cell("B2").value() = 14.00;
+              wks1.cell("C2").value() = "pongal celebration";}
+             else if(date==30){
+             auto wks1 = doc.workbook().worksheet("January");
+              wks1.cell("A2").value() = 30;
+              wks1.cell("B2").value() = 8.00;
+              wks1.cell("C2").value() = "Friend's meeting";}
+             else{
+             cout<<"no meeting available,please create a new meeting\n\n";
+             cout<<"Enter event time:  ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks1 = doc.workbook().worksheet("January");
+              wks1.cell(XLCellReference("A2")).value() = date;
+              wks1.cell(XLCellReference("B2")).value() = Time;
+              wks1.cell(XLCellReference("C2")).value() = Event_name;}
+              }   
+        else 
+            cout<< "date is incorrect";
+        }
+        else if (month == 2)
+        {
+          if( date>=1 && date<=28)
+            {
+              for (const auto& name : wbk.worksheetNames()) ;
+              wbk.worksheet("February").setIndex(1);
+              auto wks2 = doc.workbook().worksheet("February");  
+        	  wks2.cell("A1").value() = "Date";
+              wks2.cell("B1").value() = "Time";
+              wks2.cell("C1").value() = "Event name";
+            if(date==5){
+            auto wks2 = doc.workbook().worksheet("February");
+              wks2.cell("A2").value() = 5;
+              wks2.cell("B2").value() = 12.00;
+              wks2.cell("C2").value() = "Sister's reception";}
+            else if(date==18){
+            auto wks2 = doc.workbook().worksheet("February");
+              wks2.cell("A2").value() = 18;
+              wks2.cell("B2").value() = 16.00;
+              wks2.cell("C2").value() = "Reunion Function";}
+            else{
+            cout<<" no meeting available,please create a new meeting\n\n";
+            cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name: ";
+             cin>>Event_name;
+             auto wks2 = doc.workbook().worksheet("February");
+              wks2.cell(XLCellReference("A2")).value() = date;
+              wks2.cell(XLCellReference("B2")).value() = Time;
+              wks2.cell(XLCellReference("C2")).value() = Event_name;}
+           }
+          else 
+              cout<<"date is incorrect";
+        }
+        else if (month == 3)  
+        {
+            if(date>=1 && date<=31)
+                {
+                for (const auto& name : wbk.worksheetNames()) ;
+                wbk.worksheet("March").setIndex(1);
+                auto wks3 = doc.workbook().worksheet("March");  
+              wks3.cell("A1").value() = "Date";
+              wks3.cell("B1").value() = "Time";
+              wks3.cell("C1").value() = "Event name";           
+             if(date==8){
+             auto wks3 = doc.workbook().worksheet("March");
+              wks3.cell("A2").value() = 8;
+              wks3.cell("B2").value() = 7.00;
+              wks3.cell("C2").value() = "pavi birthday";}
+             else if(date==12){
+             auto wks3 = doc.workbook().worksheet("March");
+              wks3.cell("A2").value() = 12;
+              wks3.cell("B2").value() = 20.00;
+              wks3.cell("C2").value() = "Interview";}
+             else if (date==28){
+             auto wks3 = doc.workbook().worksheet("March");
+              wks3.cell("A2").value() = 28;
+              wks3.cell("B2").value() = 4.00;
+              wks3.cell("C2").value() = "Grahapravesam";
+             }
+             else{
+             cout<<"no meeting available,please create a new meeting\n\n";
+             cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks3 = doc.workbook().worksheet("March");
+              
+              wks3.cell(XLCellReference("A2")).value() = date;
+              wks3.cell(XLCellReference("B2")).value() = Time;
+              wks3.cell(XLCellReference("C2")).value() = Event_name;}
+              }
+            else
+                cout<<" date is incorrect";
+        }
+
+        else if (month == 4 )
+        { 
+            if(date>=1 && date<=30)
+                {
+                for (const auto& name : wbk.worksheetNames()) ;
+                wbk.worksheet("April").setIndex(1);
+                auto wks4 = doc.workbook().worksheet("April");  
+              wks4.cell("A1").value() = "Date";
+              wks4.cell("B1").value() = "Time";
+              wks4.cell("C1").value() = "Event name";
+             if(date==18){
+             auto wks4 = doc.workbook().worksheet("April");
+              wks4.cell("A2").value() = 28;
+              wks4.cell("B2").value() = 4.00;
+              wks4.cell("C2").value() = "Grahapravesam";}
+             else {
+             cout<<"No meeting available, please create a new meeting \n\n";
+             cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks4 = doc.workbook().worksheet("April");
+              wks4.cell(XLCellReference("A2")).value() = date;
+              wks4.cell(XLCellReference("B2")).value() = Time;
+              wks4.cell(XLCellReference("C2")).value() = Event_name;}
+      	       }
+            else 
+                cout<<" date is incorrect";
+        }
+		else if (month == 5)
+        {
+            if(date>=1 && date<=31)
+                {
+                for (const auto& name : wbk.worksheetNames()) ;
+                wbk.worksheet("May").setIndex(1);
+                auto wks5 = doc.workbook().worksheet("May");  
+              wks5.cell("A1").value() = "Date";
+              wks5.cell("B1").value() = "Time";
+              wks5.cell("C1").value() = "Event name";
+             if(date==1){
+             auto wks5 = doc.workbook().worksheet("May");              
+              wks5.cell("A2").value() = 1;
+              wks5.cell("B2").value() = 7.00;
+              wks5.cell("C2").value() = "Labour day";}
+             else if(date==18){
+             auto wks5 = doc.workbook().worksheet("May");
+              wks5.cell("A2").value() = 18;
+              wks5.cell("B2").value() = 14.00;
+              wks5.cell("C2").value() = "HR meeting";}
+             else if(date==22){
+             auto wks5 = doc.workbook().worksheet("May");
+              wks5.cell("A2").value() = 22;
+              wks5.cell("B2").value() = 18.00;
+              wks5.cell("C2").value() = "Online test";}
+             else if(date==31){
+             auto wks5 = doc.workbook().worksheet("May");
+              wks5.cell("A2").value() = 31;
+              wks5.cell("B2").value() = 14.00;
+              wks5.cell("C2").value() = "Apptitude class";}
+             else{
+              cout<<"no meeting available,please create a new meeting\n\n";
+             cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks5 = doc.workbook().worksheet("May");
+              wks5.cell(XLCellReference("A2")).value() = date;
+              wks5.cell(XLCellReference("B2")).value() = Time;
+              wks5.cell(XLCellReference("C2")).value() = Event_name;}
+             }
+            else
+                cout<<" date is incorrect";
+
+        }
+        else if (month == 6)
+        {
+            if(date>=1 && date<=30)
+             { 
+                for (const auto& name : wbk.worksheetNames()) ;
+                wbk.worksheet("June").setIndex(1);
+                auto wks6 = doc.workbook().worksheet("June");  
+              wks6.cell("A1").value() = "Date";
+              wks6.cell("B1").value() = "Time";
+              wks6.cell("C1").value() = "Event name";
+             if(date==05){
+             auto wks6 = doc.workbook().worksheet("June");              
+              wks6.cell("A2").value() = 05;
+              wks6.cell("B2").value() = 08.00;
+              wks6.cell("C2").value() = "NSS session";}
+             else if(date==10){
+             auto wks6 = doc.workbook().worksheet("June");
+              wks6.cell("A2").value() = 10;
+              wks6.cell("B2").value() = 12.00;
+              wks6.cell("C2").value() = "YRC session";}
+             else if(date==15){
+              auto wks6 = doc.workbook().worksheet("June");
+              wks6.cell("A2").value() = 15;
+              wks6.cell("B2").value() = 16.00;
+              wks6.cell("C2").value() = "PDA meeting";
+             }
+             else if(date==20){
+             auto wks6 = doc.workbook().worksheet("June");
+              wks6.cell("A2").value() = 20;
+              wks6.cell("B2").value() = 10.00;
+              wks6.cell("C2").value() = "commitee meeting";}
+             else{
+             cout<<"no meeting available,please create a new meeting\n\n";
+             cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks6 = doc.workbook().worksheet("June");     
+              wks6.cell(XLCellReference("A2")).value() = date;
+              wks6.cell(XLCellReference("B2")).value() = Time;
+              wks6.cell(XLCellReference("C2")).value() = Event_name;}
+             }
+            else
+                cout<<" date is incorrect";
+        }
+        else if (month == 7 )
+        {
+            if(date>=1 && date<=31)
+                {
+                for (const auto& name : wbk.worksheetNames()) ;
+              wbk.worksheet("July").setIndex(1);
+              auto wks7 = doc.workbook().worksheet("July");  
+              wks7.cell("A1").value() = "Date";
+              wks7.cell("B1").value() = "Time";
+              wks7.cell("C1").value() = "Event name";
+             if(date==1){
+             auto wks7 = doc.workbook().worksheet("July");              
+              wks7.cell("A2").value() = 1;
+              wks7.cell("B2").value() = 08.00;
+              wks7.cell("C2").value() = "group discussion";}
+             else if(date==10){
+             auto wks7 = doc.workbook().worksheet("July");
+              wks7.cell("A2").value() = 10;
+              wks7.cell("B2").value() = 14.00;
+              wks7.cell("C2").value() = "Shopping time";}
+             else if(date==20){
+             auto wks7 = doc.workbook().worksheet("July");
+              wks7.cell("A2").value() = 20;
+              wks7.cell("B2").value() = 18.00;
+              wks7.cell("C2").value() = "chennai travel";}
+             else if(date==23){
+             auto wks7 = doc.workbook().worksheet("July");
+              wks7.cell("A2").value() = 23;
+              wks7.cell("B2").value() = 22.00;
+              wks7.cell("C2").value() = "rotract club meeting";}
+             else{
+             cout<<"no meeting available,please create a new meeting\n\n";
+             cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks7 = doc.workbook().worksheet("July");
+              wks7.cell(XLCellReference("A2")).value() = date;
+              wks7.cell(XLCellReference("B2")).value() = Time;
+              wks7.cell(XLCellReference("C2")).value() = Event_name;}
+             }
+            else
+                cout<<" date is incorrect";
+        }
+        else if (month == 8) 
+        { 
+            if(date>=1 && date<=31)
+                {
+                for (const auto& name : wbk.worksheetNames()) ;
+                wbk.worksheet("August").setIndex(1);
+                auto wks8 = doc.workbook().worksheet("August");  
+              wks8.cell("A1").value() = "Date";
+              wks8.cell("B1").value() = "Time";
+              wks8.cell("C1").value() = "Event name";
+            if(date==15){
+            auto wks8 = doc.workbook().worksheet("August");
+              wks8.cell("A2").value() = 15;
+              wks8.cell("B2").value() = 12.00;
+              wks8.cell("C2").value() = "Independence day";}
+            else if(date==28){
+            auto wks8 = doc.workbook().worksheet("August");
+              wks8.cell("A2").value() = 28;
+              wks8.cell("B2").value() = 18.00;
+              wks8.cell("C2").value() = "YRC Session";}
+            else if(date==28){
+            auto wks8 = doc.workbook().worksheet("August");
+              wks8.cell("A2").value() = 28;
+              wks8.cell("B2").value() = 14.00;
+              wks8.cell("C2").value() = "Friend's meeting";}
+            else{
+            cout<<"no meeting available,please create a new meeting\n\n";
+            cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks8 = doc.workbook().worksheet("August");
+              wks8.cell(XLCellReference("A2")).value() = date;
+              wks8.cell(XLCellReference("B2")).value() = Time;
+              wks8.cell(XLCellReference("C2")).value() = Event_name;
+            }}
+            else
+            cout<<" date is incorrect";
+    	}
+        else if (month == 9 )
+		{
+        if(date>=1 && date<=30)
+            {
+            for (const auto& name : wbk.worksheetNames()) ;
+            wbk.worksheet("September").setIndex(1); 
+            auto wks9 = doc.workbook().worksheet("September");  
+              wks9.cell("A1").value() = "Date";
+              wks9.cell("B1").value() = "Time";
+              wks9.cell("C1").value() = "Event name";
+            if(date==06){            
+            auto wks9 = doc.workbook().worksheet("September");            
+              wks9.cell("A2").value() = 06;
+              wks9.cell("B2").value() = 8.00;
+              wks9.cell("C2").value() = "Defence day";}
+            else if(date==7){
+            auto wks9 = doc.workbook().worksheet("September");              
+              wks9.cell("A2").value() = 7;
+              wks9.cell("B2").value() = 10.00;
+              wks9.cell("C2").value() = "Air force day";}
+            else if(date==20){
+            auto wks9 = doc.workbook().worksheet("September");
+              wks9.cell("A2").value() = 20;
+              wks9.cell("B2").value() = 12.00;
+              wks9.cell("C2").value() = "Bestie birthday";}
+            else if(date==28){
+            auto wks9 = doc.workbook().worksheet("September");
+              wks9.cell("A2").value() = 28;
+              wks9.cell("B2").value() = 14.00;
+              wks9.cell("C2").value() = "HR meeting";}
+            else{
+            cout<<"no meeting available,please create a new meeting\n\n";
+            cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks9 = doc.workbook().worksheet("September");
+              wks9.cell(XLCellReference("A2")).value() = date;
+              wks9.cell(XLCellReference("B2")).value() = Time;
+              wks9.cell(XLCellReference("C2")).value() = Event_name;
+            }}
+        else
+            cout<<"this date is incorrect";
+        }            
+        else if (month == 10)
+         {
+         if(date>=1 && date<=31)
+             {
+             for (const auto& name : wbk.worksheetNames()) ;
+             wbk.worksheet("October").setIndex(1);
+             auto wks10 = doc.workbook().worksheet("October");  
+             wks10.cell("A1").value() = "Date";
+              wks10.cell("B1").value() = "Time";
+              wks10.cell("C1").value() = "Event name";            
+            if(date==16){            
+            auto wks10 = doc.workbook().worksheet("October");              
+              wks10.cell("A2").value() = 16;
+              wks10.cell("B2").value() = 10.00;
+              wks10.cell("C2").value() = "Civil Service class";}
+            else if(date==18){            
+            auto wks10 = doc.workbook().worksheet("October");
+              wks10.cell("A2").value() = 18;
+              wks10.cell("B2").value() = 18.00;
+              wks10.cell("C2").value() ="Apptitude class";}
+            else if(date==29){
+            auto wks10 = doc.workbook().worksheet("October");
+              wks10.cell("A2").value() = 29;
+              wks10.cell("B2").value() = 20.00;
+              wks10.cell("C2").value() = "group discussion";
+            }
+            else{
+             cout<<"no meeting available,please create a new meeting\n\n";
+            cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks10 = doc.workbook().worksheet("October");              
+              wks10.cell(XLCellReference("A2")).value() = date;
+              wks10.cell(XLCellReference("B2")).value() = Time;
+              wks10.cell(XLCellReference("C2")).value() = Event_name;
+            }}
+         else
+             cout<<"this date is incorrect";
+         }
+        else if (month == 11) 
+        { 
+        if(date>=1 && date<=30)
+            {
+            for (const auto& name : wbk.worksheetNames()) ;
+            wbk.worksheet("November").setIndex(1);
+            auto wks11 = doc.workbook().worksheet("November");  
+              wks11.cell("A1").value() = "Date";
+              wks11.cell("B1").value() = "Time";
+              wks11.cell("C1").value() = "Event name";
+            if(date==6){
+            auto wks11 = doc.workbook().worksheet("November");        
+              wks11.cell("A2").value() = 6;
+              wks11.cell("B2").value() = 10.00;
+              wks11.cell("C2").value() = "PDA meeting";}
+            else if(date==12){
+            auto wks11 = doc.workbook().worksheet("November");
+              wks11.cell("A2").value() = 12;
+              wks11.cell("B2").value() = 11.00;
+              wks11.cell("C2").value() = "NSS session";}
+            else if(date==18){
+            auto wks11 = doc.workbook().worksheet("November");
+              wks11.cell("A2").value() = 6;
+              wks11.cell("B2").value() = 10.00;
+              wks11.cell("C2").value() = "blood donating camp";}
+            else{
+            cout<<"no meeting available,please create a new meeting \n\n";
+            cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks11 = doc.workbook().worksheet("November");
+              wks11.cell(XLCellReference("A2")).value() = date;
+              wks11.cell(XLCellReference("B2")).value() = Time;
+              wks11.cell(XLCellReference("C2")).value() = Event_name;
+            }}
+        else
+            cout<<"this date is incorrect";
+        }
+        else
+        {
+         if(date>=1 && date<=31)
+            {
+             for (const auto& name : wbk.worksheetNames()) ;
+             wbk.worksheet("December").setIndex(1);
+             auto wks12 = doc.workbook().worksheet("December");  
+             wks12.cell("A1").value() = "Date";
+             wks12.cell("B1").value() = "Time";
+             wks12.cell("C1").value() = "Event name";
+            if(date==23){
+            auto wks12 = doc.workbook().worksheet("December"); 
+              wks12.cell("A2").value() = 23;
+              wks12.cell("B2").value() = 10.00;
+              wks12.cell("C2").value() = "nigila birthday";}
+            else if(date==25){
+            auto wks12 = doc.workbook().worksheet("December");
+              wks12.cell("A2").value() = 25;
+              wks12.cell("B2").value() = 12.00;
+              wks12.cell("C2").value() = "Christmas day";}
+            else if(date==26){
+            auto wks12 = doc.workbook().worksheet("December");
+              wks12.cell("A2").value() = 26;
+              wks12.cell("B2").value() = 07.00;
+              wks12.cell("C2").value() = "brother marriage";}
+            else if(date==27){
+            auto wks12 = doc.workbook().worksheet("December");
+              wks12.cell("A2").value() = 27;
+              wks12.cell("B2").value() = 20.00;
+              wks12.cell("C2").value() = "Labourarty opening function";} 
+            else if(date==28){
+            auto wks12 = doc.workbook().worksheet("December");
+              wks12.cell("A2").value() = 28;
+              wks12.cell("B2").value() = 10.00;
+              wks12.cell("C2").value() = "project submission";}
+            else{
+            cout<<"no meeting available,please create a new meeting \n\n";
+            cout<<"Enter event time: ";
+             cin>>Time;
+             cout<<"Enter Event name : ";
+             cin>>Event_name;
+             auto wks12 = doc.workbook().worksheet("December");
+              wks12.cell(XLCellReference("A2")).value() = date;
+              wks12.cell(XLCellReference("B2")).value() = Time;
+              wks12.cell(XLCellReference("C2")).value() = Event_name;
+            }}
+        else
+            cout<<"this date is incorrect";
+    	}
+    }
+else 
+  cout<< "please enter valid month";
+
+      doc.save ();
+      return 0;
+}      
+		
